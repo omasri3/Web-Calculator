@@ -16,6 +16,7 @@ function multiply(a,b) {
 
 function divide(a,b) {
     if (b === 0) {
+        nextNumberResetsDisplay = true;
         return "You can't divide by zero, nerd!"
     } else {
         return a/b
@@ -30,19 +31,23 @@ let operation = null;
 //Track whether the next number needs to reset the display for second operator
 let nextNumberResetsDisplay = false;
 
+//Track whether the number has already been operated on
+let numberHasBeenOperated = false;
+
 // operate function takes in first and second operator and runs the function given by the operation
 function operate(firstOperator, secondOperator, operation) {
     if (operation === "+") {
-        return add(firstOperator,secondOperator);
+        result =  add(firstOperator,secondOperator);
     } else if (operation === "-") {
-        return subtract(firstOperator, secondOperator);
+        result = subtract(firstOperator, secondOperator);
     } else if (operation === "*") {
-        return multiply(firstOperator, secondOperator);
+        result =  multiply(firstOperator, secondOperator);
     } else if (operation === "/") {
-        return divide(firstOperator, secondOperator);
+        result = divide(firstOperator, secondOperator);
     } else {
         return error;
     }
+    return Math.round(result * 10**8) / (10**8)
 }
 
 //Initialize the reference to the total display for the calculator
@@ -167,6 +172,17 @@ function addNineToDisplay() {
     }
 }
 
+function addDecimalToDisplay() {
+    if (totalDisplay.textContent === "0") {
+        totalDisplay.textContent = totalDisplay.textContent + ".";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "0.";
+        nextNumberResetsDisplay = false;
+    } else {
+        totalDisplay.textContent = totalDisplay.textContent + ".";
+    }
+}
+
 //On operation click, store the number currently on the display as the first operator
 //Then reset the display once the next number is pressed to that number
 //On equals click, calculate the result and store the result as the first operator for more calculations
@@ -178,35 +194,80 @@ const multiplication = document.querySelector("#multiplication");
 const division = document.querySelector("#division");
 const equals = document.querySelector("#equals");
 
+//Add event listeners that will run the calculation based on the current display and produce the correct result
 addition.addEventListener("click", function (e) {
-    operation = "+";
-    firstOperator = Number(totalDisplay.textContent);
-    nextNumberResetsDisplay = true;
+    if (nextNumberResetsDisplay) {
+        operation = "+"
+    } else if (operation !== null) {
+        secondOperator = Number(totalDisplay.textContent);
+        totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        firstOperator = Number(totalDisplay.textContent);
+        secondOperator = null;
+        operation = "+"
+        nextNumberResetsDisplay = true;
+    } else {
+        operation = "+";
+        firstOperator = Number(totalDisplay.textContent);
+        nextNumberResetsDisplay = true;
+    }
 });
 
 subtraction.addEventListener("click", function (e) {
-    operation = "-";
-    firstOperator = Number(totalDisplay.textContent);
-    nextNumberResetsDisplay = true;
+    if (nextNumberResetsDisplay) {
+        operation = "-";
+    } else if (operation !== null) {
+        secondOperator = Number(totalDisplay.textContent);
+        totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        firstOperator = Number(totalDisplay.textContent);
+        operation = "-"
+        nextNumberResetsDisplay = true;
+    } else {
+        operation = "-";
+        firstOperator = Number(totalDisplay.textContent);
+        nextNumberResetsDisplay = true;
+    }
 });
 
 multiplication.addEventListener("click", function (e) {
-    operation = "*";
-    firstOperator = Number(totalDisplay.textContent);
-    nextNumberResetsDisplay = true;
+    if (nextNumberResetsDisplay) {
+        operation = "*"
+    }
+    else if (operation !== null) {
+        secondOperator = Number(totalDisplay.textContent);
+        totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        firstOperator = Number(totalDisplay.textContent);
+        operation = "*"
+        nextNumberResetsDisplay = true;
+    } else {
+        operation = "*";
+        firstOperator = Number(totalDisplay.textContent);
+        nextNumberResetsDisplay = true;
+    }
 });
 
 division.addEventListener("click", function (e) {
-    operation = "/";
-    firstOperator = Number(totalDisplay.textContent);
-    nextNumberResetsDisplay = true;
+    if (nextNumberResetsDisplay) {
+        operation = "/"
+    }
+    else if (operation !== null) {
+        secondOperator = Number(totalDisplay.textContent);
+        totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        firstOperator = Number(totalDisplay.textContent);
+        operation = "/"
+        nextNumberResetsDisplay = true;
+    } else {
+        operation = "/";
+        firstOperator = Number(totalDisplay.textContent);
+        nextNumberResetsDisplay = true;
+    }
 });
 
 equals.addEventListener("click", function (e) {
-    if (operation === null) {
-
-    } else {
+    if (operation !== null) {
         secondOperator = Number(totalDisplay.textContent);
         totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        operation = null;
+    } else {
+        firstOperator = totalDisplay.textContent;
     }
 });

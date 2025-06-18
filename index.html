@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id = "calculator">
-        <div id = "totalDisplay"> 9999999999 </div>
+        <div id = "totalDisplay">0</div>
         <div id="numberContainer">
             <button class = "numberButton" onclick = addZeroToDisplay()>0</button>
             <button class = "numberButton" onclick = addOneToDisplay()>1</button>
@@ -30,7 +30,7 @@
         </div>
         <div id="miscOperationContainer">
             <button class = "miscButton" onclick = clearDisplay()>Clear</button>
-            <button class = "miscButton"> . </button>
+            <button class = "miscButton" onclick = addDecimalToDisplay()> . </button>
         </div>
     </div>
     <script src = "calcLogic.js"></script>
