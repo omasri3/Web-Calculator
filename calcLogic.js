@@ -173,7 +173,10 @@ function addNineToDisplay() {
 }
 
 function addDecimalToDisplay() {
-    if (totalDisplay.textContent === "0") {
+    isThereAlreadyDecimal = totalDisplay.textContent.split(".").length >= 2;
+    if (isThereAlreadyDecimal) {
+        //Do Nothing
+    } else if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = totalDisplay.textContent + ".";
     } else if (nextNumberResetsDisplay) {
         totalDisplay.textContent = "0.";
@@ -267,7 +270,9 @@ equals.addEventListener("click", function (e) {
         secondOperator = Number(totalDisplay.textContent);
         totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
         operation = null;
+        nextNumberResetsDisplay = true;
     } else {
         firstOperator = totalDisplay.textContent;
+        nextNumberResetsDisplay = true;
     }
 });
