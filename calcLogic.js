@@ -27,6 +27,9 @@ let firstOperator = null;
 let secondOperator = null;
 let operation = null;
 
+//Track whether the next number needs to reset the display for second operator
+let nextNumberResetsDisplay = false;
+
 // operate function takes in first and second operator and runs the function given by the operation
 function operate(firstOperator, secondOperator, operation) {
     if (operation === "+") {
@@ -48,12 +51,18 @@ let totalDisplay = document.querySelector("#totalDisplay")
 //Clear the text content of the display when hitting the clear button and reset to zero
 function clearDisplay() {
     totalDisplay.textContent = "0";
+    firstOperator = null;
+    secondOperator = null;
+    operation = null;
 }
 
 //Write functions to add each number to the display when the button is clicked
 function addZeroToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "0";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "0";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "0";
     }
@@ -62,6 +71,9 @@ function addZeroToDisplay() {
 function addOneToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "1";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "1";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "1";
     }
@@ -70,6 +82,9 @@ function addOneToDisplay() {
 function addTwoToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "2";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "2";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "2";
     }
@@ -78,6 +93,9 @@ function addTwoToDisplay() {
 function addThreeToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "3";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "3";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "3";
     }
@@ -86,6 +104,9 @@ function addThreeToDisplay() {
 function addFourToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "4";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "4";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "4";
     }
@@ -94,6 +115,9 @@ function addFourToDisplay() {
 function addFiveToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "5";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "5";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "5";
     }
@@ -102,6 +126,9 @@ function addFiveToDisplay() {
 function addSixToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "6";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "6";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "6";
     }
@@ -110,6 +137,9 @@ function addSixToDisplay() {
 function addSevenToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "7";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "7";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "7";
     }
@@ -118,6 +148,9 @@ function addSevenToDisplay() {
 function addEightToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "8";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "8";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "8";
     }
@@ -126,7 +159,54 @@ function addEightToDisplay() {
 function addNineToDisplay() {
     if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = "9";
+    } else if (nextNumberResetsDisplay) {
+        totalDisplay.textContent = "9";
+        nextNumberResetsDisplay = false;
     } else {
         totalDisplay.textContent = totalDisplay.textContent + "9";
     }
 }
+
+//On operation click, store the number currently on the display as the first operator
+//Then reset the display once the next number is pressed to that number
+//On equals click, calculate the result and store the result as the first operator for more calculations
+
+//Initialize operations
+const addition = document.querySelector("#addition");
+const subtraction = document.querySelector("#subtraction");
+const multiplication = document.querySelector("#multiplication");
+const division = document.querySelector("#division");
+const equals = document.querySelector("#equals");
+
+addition.addEventListener("click", function (e) {
+    operation = "+";
+    firstOperator = Number(totalDisplay.textContent);
+    nextNumberResetsDisplay = true;
+});
+
+subtraction.addEventListener("click", function (e) {
+    operation = "-";
+    firstOperator = Number(totalDisplay.textContent);
+    nextNumberResetsDisplay = true;
+});
+
+multiplication.addEventListener("click", function (e) {
+    operation = "*";
+    firstOperator = Number(totalDisplay.textContent);
+    nextNumberResetsDisplay = true;
+});
+
+division.addEventListener("click", function (e) {
+    operation = "/";
+    firstOperator = Number(totalDisplay.textContent);
+    nextNumberResetsDisplay = true;
+});
+
+equals.addEventListener("click", function (e) {
+    if (operation === null) {
+
+    } else {
+        secondOperator = Number(totalDisplay.textContent);
+        totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+    }
+});
