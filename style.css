@@ -1,0 +1,51 @@
+#totalDisplay {
+    font:600;
+    font-size: 48px;
+    display: flex;
+    margin: auto;
+}
+
+#calculator {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    margin: auto;
+}
+
+.numberButton {
+    padding: 10px 20px;
+}
+
+#numberContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.operationButton {
+    padding: 10px 20px;
+}
+
+.miscButton {
+    padding: 10px 20px;
+}
+
+
+#operationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+#miscOperationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0px;
+}

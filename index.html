@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id = "totalDisplay"> 9999999999 </div>
-    <div id="buttonContainer">
-        <button class = "numberButton">0</button>
-        <button class = "numberButton">1</button>
-        <button class = "numberButton">2</button>
-        <button class = "numberButton">3</button>
-        <button class = "numberButton">4</button>
-        <button class = "numberButton">5</button>
-        <button class = "numberButton">6</button>
-        <button class = "numberButton">7</button>
-        <button class = "numberButton">8</button>
-        <button class = "numberButton">9</button>
+    <div id = "calculator">
+        <div id = "totalDisplay"> 9999999999 </div>
+        <div id="numberContainer">
+            <button class = "numberButton" onclick = addZeroToDisplay()>0</button>
+            <button class = "numberButton" onclick = addOneToDisplay()>1</button>
+            <button class = "numberButton" onclick = addTwoToDisplay()>2</button>
+            <button class = "numberButton" onclick = addThreeToDisplay()>3</button>
+            <button class = "numberButton" onclick = addFourToDisplay()>4</button>
+            <button class = "numberButton" onclick = addFiveToDisplay()>5</button>
+            <button class = "numberButton" onclick = addSixToDisplay()>6</button>
+            <button class = "numberButton" onclick = addSevenToDisplay()>7</button>
+            <button class = "numberButton" onclick = addEightToDisplay()>8</button>
+            <button class = "numberButton" onclick = addNineToDisplay()>9</button>
+        </div>
+        <div id="operationContainer">
+            <button class = "operationButton">+</button>
+            <button class = "operationButton">-</button>
+            <button class = "operationButton">*</button>
+            <button class = "operationButton">/</button>
+            <button class = "operationButton">=</button>
+        </div>
+        <div id="miscOperationContainer">
+            <button class = "miscButton" onclick = clearDisplay()>Clear</button>
+            <button class = "miscButton"> . </button>
+        </div>
     </div>
-    <div id="operationContainer">
-        <button class = "operationButton">+</button>
-        <button class = "operationButton">-</button>
-        <button class = "operationButton">*</button>
-        <button class = "operationButton">/</button>
-        <button class = "operationButton">=</button>
-    </div>
-    <div id="miscOperationsContainer">
-        <button class = "miscButton">Clear</button>
-        <button class = "miscButton"> . </button>
-    </div>
+    <script src = "calcLogic.js"></script>
 </body>
 </html>
