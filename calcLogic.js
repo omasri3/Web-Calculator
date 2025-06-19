@@ -294,3 +294,64 @@ function backspace() {
         totalDisplay.textContent = totalDisplay.textContent.slice(0,totalDisplay.textContent.length-1);
     }
 }
+
+//Pressing a number on the keyboard should let you run the appropriate function
+document.addEventListener( "keydown", function (e) {
+    console.log(e);
+    switch (e.key) {
+        case "1":
+            addOneToDisplay();
+            break;
+        case "2":
+            addTwoToDisplay();
+            break;
+        case "3":
+            addThreeToDisplay();
+            break;
+        case "4":
+            addFourToDisplay();
+            break;
+        case "5":
+            addFiveToDisplay();
+            break;
+        case "6":
+            addSixToDisplay();
+            break;
+        case "7":
+            addSevenToDisplay();
+            break;
+        case "8":
+            addEightToDisplay();
+            break;
+        case "9":
+            addNineToDisplay();
+            break;
+        case "0":
+            addZeroToDisplay();
+            break;
+        case ".":
+            addDecimalToDisplay();
+            break;
+        case "+":
+            addition.click();
+            break;
+        case "-":
+            subtraction.click();
+            break;
+        case "*":
+            multiplication.click();
+            break;
+        case "/":
+            division.click();
+            break;
+        case "=":
+            equals.click();
+            break;
+        case "Enter":
+            equals.click();
+            break;
+        case "Backspace":
+            backspace();
+            break;
+    }
+})
