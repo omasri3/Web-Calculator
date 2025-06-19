@@ -59,6 +59,7 @@ function clearDisplay() {
     firstOperator = null;
     secondOperator = null;
     operation = null;
+    nextNumberResetsDisplay = false;
 }
 
 //Write functions to add each number to the display when the button is clicked
@@ -174,7 +175,7 @@ function addNineToDisplay() {
 
 function addDecimalToDisplay() {
     isThereAlreadyDecimal = totalDisplay.textContent.split(".").length >= 2;
-    if (isThereAlreadyDecimal) {
+    if (isThereAlreadyDecimal && !nextNumberResetsDisplay) {
         //Do Nothing
     } else if (totalDisplay.textContent === "0") {
         totalDisplay.textContent = totalDisplay.textContent + ".";
@@ -276,3 +277,20 @@ equals.addEventListener("click", function (e) {
         nextNumberResetsDisplay = true;
     }
 });
+
+//Delete the last character if backspace is pressed
+function backspace() {
+    let toBeDeleted = totalDisplay.textContent.slice(totalDisplay.textContent.length - 1);
+    let isThereADecimalNext = totalDisplay.textContent.slice(totalDisplay.textContent.length - 2, totalDisplay.textContent.length - 1);
+    if (totalDisplay.textContent === "0") {
+        //Do Nothing
+    } else if (totalDisplay.textContent.length === 1) {
+        totalDisplay.textContent = "0";
+    } else if (totalDisplay.textContent.length === 2 && totalDisplay.textContent.slice(0,1) === "-") {
+        totalDisplay.textContent = "0";
+    } else if (isThereADecimalNext === ".") {
+        totalDisplay.textContent = totalDisplay.textContent.slice(0,totalDisplay.textContent.length - 2);
+    } else {
+        totalDisplay.textContent = totalDisplay.textContent.slice(0,totalDisplay.textContent.length-1);
+    }
+}
