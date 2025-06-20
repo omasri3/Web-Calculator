@@ -9,29 +9,39 @@
 <body>
     <div id = "calculator">
         <div id = "totalDisplay">0</div>
-        <div id="numberContainer">
-            <button class = "numberButton" onclick = addZeroToDisplay()>0</button>
-            <button class = "numberButton" onclick = addOneToDisplay()>1</button>
-            <button class = "numberButton" onclick = addTwoToDisplay()>2</button>
-            <button class = "numberButton" onclick = addThreeToDisplay()>3</button>
-            <button class = "numberButton" onclick = addFourToDisplay()>4</button>
-            <button class = "numberButton" onclick = addFiveToDisplay()>5</button>
-            <button class = "numberButton" onclick = addSixToDisplay()>6</button>
-            <button class = "numberButton" onclick = addSevenToDisplay()>7</button>
-            <button class = "numberButton" onclick = addEightToDisplay()>8</button>
-            <button class = "numberButton" onclick = addNineToDisplay()>9</button>
-        </div>
-        <div id="operationContainer">
-            <button class = "operationButton" id = "addition">+</button>
-            <button class = "operationButton" id = "subtraction">-</button>
-            <button class = "operationButton" id = "multiplication">*</button>
+        <div id="firstRow">
+            <button id = "clearButton" class = "miscButton" onclick = clearDisplay()>Clear</button>
             <button class = "operationButton" id = "division">/</button>
-            <button class = "operationButton" id = "equals">=</button>
+            <button class = "operationButton" id = "multiplication">*</button>
+            <button class = "operationButton" id = "subtraction">-</button>
+            <button id = "backspaceButton" class = "miscButton" onclick = backspace()>⌫</button>
         </div>
-        <div id="miscOperationContainer">
-            <button class = "miscButton" onclick = clearDisplay()>Clear</button>
-            <button class = "miscButton" onclick = addDecimalToDisplay()> . </button>
-            <button class = "miscButton" onclick = backspace()>⌫</button>
+        <div id="secondThruFifthRows">
+            <div id="zeroThroughNine">
+                <div id="subRowOne" class = "subRow">
+                    <button class = "numberButton" onclick = addSevenToDisplay()>7</button>
+                    <button class = "numberButton" onclick = addEightToDisplay()>8</button>
+                    <button class = "numberButton" onclick = addNineToDisplay()>9</button>
+                </div>
+                <div id="subRowTwo" class = "subRow">
+                    <button class = "numberButton" onclick = addFourToDisplay()>4</button>
+                    <button class = "numberButton" onclick = addFiveToDisplay()>5</button>
+                    <button class = "numberButton" onclick = addSixToDisplay()>6</button>
+                </div>
+                <div id = "subRowThree" class = "subRow">
+                    <button id = "oneButton" class = "numberButton" onclick = addOneToDisplay()>1</button>
+                    <button class = "numberButton" onclick = addTwoToDisplay()>2</button>
+                    <button class = "numberButton" onclick = addThreeToDisplay()>3</button>
+                </div>
+                <div id = "subRowFour" class = subRow>
+                    <button id = "zeroButton" class = "numberButton" onclick = addZeroToDisplay()>0</button>
+                    <button class = "miscButton" onclick = addDecimalToDisplay()> . </button>
+                </div>
+            </div>
+            <div id="plusAndEnter">
+                <button class = "operationButton" id = "addition">+</button>
+                <button class = "operationButton" id = "equals">=</button>
+            </div>
         </div>
     </div>
     <script src = "calcLogic.js"></script>

@@ -270,6 +270,7 @@ equals.addEventListener("click", function (e) {
     if (operation !== null) {
         secondOperator = Number(totalDisplay.textContent);
         totalDisplay.textContent = operate(firstOperator, secondOperator, operation)
+        firstOperator = totalDisplay.textContent;
         operation = null;
         nextNumberResetsDisplay = true;
     } else {
@@ -295,11 +296,18 @@ function backspace() {
     }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 //Pressing a number on the keyboard should let you run the appropriate function
 document.addEventListener( "keydown", function (e) {
     console.log(e);
     switch (e.key) {
         case "1":
+            oneButton = document.querySelector("#oneButton");
+            oneButton.classList.add("hover");
+            sleep(200).then(() => oneButton.classList.remove("hover"))
             addOneToDisplay();
             break;
         case "2":

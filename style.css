@@ -1,51 +1,100 @@
-#totalDisplay {
-    font:600;
-    font-size: 48px;
-    display: flex;
-    margin: auto;
-}
-
 #calculator {
-    border-style: solid;
-    border-color: black;
-    border-width: 5px;
-    border-radius: 3px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: start;
+    width: 50vw;
+    height: 50vh;
+    border: solid 5px #4a86eb;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    height: 98vh;
+    display: flex;
     justify-content: center;
-    margin: auto;
+    align-items: center;
+}
+
+#totalDisplay {
+    font-size: 60px;
+    font: 600;
+    width: 40vw;
+    display: flex;
+    justify-content: right;
+    background-color: #eee;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#firstRow{
+    display: flex;
+    width: 40vw;
+    justify-content: space-between;
+}
+
+#secondThruFifthRows {
+    display: flex;
+    width: 40vw;
+    justify-content: center;
+    flex: 1 1 auto;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 40px;
+    background-color: #eff;
+    border-width: 1px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.2s;
+}
+
+#plusAndEnter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#zeroThroughNine {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.subRow {
+    display: flex;
+    flex: 1;
 }
 
 .numberButton {
-    padding: 10px 20px;
-}
-
-#numberContainer {
     display: flex;
-    justify-content: center;
-    gap: 10px;
 }
 
-.operationButton {
-    padding: 10px 20px;
+button:hover,
+button.hover {
+    background-color: #4a86eb;
+    color: white;
 }
 
-.miscButton {
-    padding: 10px 20px;
+#addition,
+#equals {
+    padding: 0px 30px;
 }
 
-
-#operationContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+#zeroButton {
+    flex: 2.1;
 }
 
+#clearButton {
+    flex: 1.58;
+}
 
-#miscOperationContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 0px;
+#backspaceButton {
+    flex: 0.87;
 }
